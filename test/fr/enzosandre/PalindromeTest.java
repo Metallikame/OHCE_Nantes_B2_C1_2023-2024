@@ -98,19 +98,6 @@ public class PalindromeTest {
         assertEquals(salutations, lines[0]);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"test", "radar"})
-    public void testAuRevoir(String chaîne){
-        // ETANT DONNE une chaîne
-        // QUAND on vérifie si c'est un palindrome
-        String résultat =  VérificationPalindromeBuilder.Default().Vérifier(chaîne);
-
-        // ALORS toute réponse est suivie de "Au Revoir"
-        String[] lines = résultat.split(System.lineSeparator());
-        String lastLine = lines[lines.length - 1];
-        assertEquals(Expressions.AuRevoir, lastLine);
-    }
-
     static Stream<Arguments> casTestAuRevoir() {
         return Stream.of(
                 Arguments.of("test", new LangueFrançaise(), Expressions.AuRevoir),
