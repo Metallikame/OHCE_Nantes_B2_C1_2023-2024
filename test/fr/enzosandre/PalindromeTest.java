@@ -110,4 +110,30 @@ public class PalindromeTest {
         String lastLine = lines[lines.length - 1];
         assertEquals(Expressions.AuRevoir, lastLine);
     }
+
+    static Stream<Arguments> casTestAuRevoir() {
+        return Stream.of(
+                Arguments.of("test", new LangueFrançaise(), Expressions.AuRevoir),
+                Arguments.of("radar", new LangueFrançaise(), Expressions.AuRevoir),
+                Arguments.of("test", new LangueAnglaise(), Expressions.Bye),
+                Arguments.of("radar", new LangueAnglaise(), Expressions.Bye)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("casTestAuRevoir")
+    public void testAuRevoirFrançais(String chaîne, LangueInterface langue, String salutations){
+        // ETANT DONNE une chaîne
+        // ET un utilisateur parlant une <langue>
+        var vérification = new VérificationPalindromeBuilder()
+                .AyantPourLangue(langue)
+                .Build();
+
+        // QUAND on vérifie si c'est un palindrome
+        String résultat =  vérification.Vérifier(chaîne);
+
+        // ALORS toute réponse est précédée de <salutations> dans cette <langue>
+        String[] lines = résultat.split(System.lineSeparator());
+        assertEquals(salutations, lines[0]);
+    }
 }

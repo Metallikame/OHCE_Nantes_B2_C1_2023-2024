@@ -12,6 +12,11 @@ public class LangueAnglaise implements LangueInterface {
     }
 
     @Override
+    public String Quitter() {
+        return Expressions.Bye;
+    }
+
+    @Override
     public String toString() {
         return "Langue Anglaise";
     }

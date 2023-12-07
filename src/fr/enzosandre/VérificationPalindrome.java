@@ -24,6 +24,7 @@ public class VérificationPalindrome {
         }
 
         resultBuilder.append(Expressions.AuRevoir);
+        resultBuilder.append(this.langue.Quitter());
         return resultBuilder.toString();
     }
 }
