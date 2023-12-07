@@ -122,7 +122,7 @@ public class PalindromeTest {
 
     @ParameterizedTest
     @MethodSource("casTestAuRevoir")
-    public void testAuRevoirFrançais(String chaîne, LangueInterface langue, String salutations){
+    public void testAuRevoirFrançais(String chaîne, LangueInterface langue, String fuites){
         // ETANT DONNE une chaîne
         // ET un utilisateur parlant une <langue>
         var vérification = new VérificationPalindromeBuilder()
@@ -134,6 +134,6 @@ public class PalindromeTest {
 
         // ALORS toute réponse est précédée de <salutations> dans cette <langue>
         String[] lines = résultat.split(System.lineSeparator());
-        assertEquals(salutations, lines[0]);
+        assertEquals(fuites, lines[lines.length-1]);
     }
 }
